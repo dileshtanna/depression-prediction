@@ -1,0 +1,54 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">Twipression</a>
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <a
+        routerLinkActive="active current"
+        routerLink="/feed"
+        class="nav-link active"
+        >Feed</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link active"
+        routerLinkActive="active current"
+        routerLink="/admin"
+        *ngIf="authService.isLoggedIn() && authService.currentUser.isAdmin"
+        >Dashboard</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link active"
+        routerLinkActive="active current"
+        routerLink="/sign-up"
+        *ngIf="!authService.isLoggedIn()"
+        >Register</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link active"
+        routerLinkActive="active current"
+        routerLink="/login"
+        *ngIf="!authService.isLoggedIn()"
+        >Login</a
+      >
+    </li>
+    <li class="nav-item" *ngIf="authService.isLoggedIn()">
+      <span style="color:black;" class="navbar-text active">
+        Welcome, {{ authService.currentUser.name }}</span
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link active"
+        routerLinkActive="active current"
+        (click)="authService.logout()"
+        *ngIf="authService.isLoggedIn()"
+        >Logout</a
+      >
+    </li>
+  </ul>
+</nav>

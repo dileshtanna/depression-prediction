@@ -1,0 +1,65 @@
+<navbar></navbar>>
+
+<div class="container">
+  <div class="col-sm-4">
+    <div class="mt-5">
+      <form #signUpForm="ngForm" (ngSubmit)="signUp(signUpForm)">
+        <h2>Sign up</h2>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            required
+            ngModel
+            name="username"
+            type="text"
+            class="form-control"
+            id="username"
+            placeholder="Enter Username"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            required
+            ngModel
+            name="email"
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter Email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            ngModel
+            required
+            name="password"
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Password"
+          />
+        </div>
+        <div class="form-group">
+          <label for="mobile">Mobile</label>
+          <input
+            required
+            ngModel
+            name="mobile"
+            type="text"
+            class="form-control"
+            id="mobile"
+            placeholder="Enter Mobile"
+          />
+        </div>
+        <input
+          [disabled]="!signUpForm.valid"
+          type="submit"
+          class="btn btn-primary"
+          value="Sumbit"
+        />
+      </form>
+    </div>
+  </div>
+</div>

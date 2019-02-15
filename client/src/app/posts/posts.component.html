@@ -1,0 +1,59 @@
+<navbar></navbar>>
+
+<div class="container">
+  <div class="col-sm-6">
+    <div class="mt-5">
+      <form #postForm="ngForm" (ngSubmit)="post(postForm)">
+        <h2>Post something</h2>
+        <div class="form-group">
+          <textarea
+            required
+            name="post"
+            ngModel
+            class="form-control form-control-lg"
+            type="text"
+            placeholder="What's on your mind?.. "
+          ></textarea>
+        </div>
+        <input
+          [disabled]="!postForm.valid"
+          type="submit"
+          class="btn btn-primary"
+          value="Submit"
+        />
+      </form>
+    </div>
+  </div>
+  <hr />
+  <div class="col-sm-8">
+    <h2>Your posts</h2>
+    <div class="mt-3">
+      <div class="card">
+        <div class="card-header">
+          @thisisbhaven
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">
+            With supporting text below as a natural lead-in to additional
+            content.
+          </h5>
+          <p class="card-text">3 weeks ago</p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3">
+      <div class="card">
+        <div class="card-header">
+          @thisisdilesh
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">
+            With supporting text below as a natural lead-in to additional
+            content.
+          </h5>
+          <p class="card-text">3 weeks ago</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
