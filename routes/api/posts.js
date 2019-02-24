@@ -7,7 +7,7 @@ var router = express.Router();
 router.post("/get-all", async (req, res, next) => {
   let username = req.body.username;
   let result = await db.any(
-    `select username,post,date from posts where username='${username}'`
+    `select id,username,post,date from posts where username='${username}' order by id desc`
   );
   res.status(200).json({
     status: 200,

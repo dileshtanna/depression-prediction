@@ -8,5 +8,6 @@ CREATE Table users
     email varchar,
     phone varchar,
     password varchar,
-    score varchar
+    score varchar,
+    isadmin varchar default false
 )

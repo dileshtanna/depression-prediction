@@ -16,7 +16,12 @@ router.post("/", async (req, res, next) => {
 
   bcrypt.compare(password, user[0].password).then(isMatch => {
     if (isMatch) {
-      const payload = { id: user[0].id, username: user[0].username };
+      const payload = {
+        id: user[0].id,
+        username: user[0].username,
+        score: user[0].score,
+        isAdmin: user[0].isadmin
+      };
 
       jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
         res.json({
