@@ -1,36 +1,35 @@
-<navbar></navbar>>
-<div class="container">
-  <div class="col-sm-8">
-    <div class="mt-5">
-      <h2>Feed</h2>
-      <div class="mt-3">
-        <div class="card">
-          <div class="card-header">
-            @thisisbhaven
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">
-              With supporting text below as a natural lead-in to additional
-              content.
-            </h5>
-            <p class="card-text">3 weeks ago</p>
-          </div>
-        </div>
-      </div>
-      <div class="mt-3">
-        <div class="card">
-          <div class="card-header">
-            @thisisdilesh
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">
-              With supporting text below as a natural lead-in to additional
-              content.
-            </h5>
-            <p class="card-text">3 weeks ago</p>
+<navbar></navbar>
+<div class="row">
+  <div class="col-lg-8">
+    <div class="container">
+      <div class="col-sm-8">
+        <div class="mt-5">
+          <h2>Feed</h2>
+          <div *ngFor="let p of posts" class="mt-3">
+            <div class="card">
+              <div class="card-header">
+                {{ p.username }}
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">
+                  {{ p.post }}
+                </h5>
+                <p class="card-text">{{ p.date | date }}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div *ngIf="depressed" class="col-lg-4">
+    <div class="container">
+      <img src="../../assets/motivation.jpg" alt="Motivation Quotes" />
+    </div>
+  </div>
+  <div *ngIf="!depressed" class="col-lg-4">
+    <div class="container">
+      <img src="../../assets/pizza.jpg" alt="Motivation Quotes" />
     </div>
   </div>
 </div>

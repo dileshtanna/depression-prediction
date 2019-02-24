@@ -1,5 +1,7 @@
 import { PostsService } from "./../services/posts.service";
 import { Component, OnInit } from "@angular/core";
+import { AuthService } from "../services/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "posts",
@@ -7,14 +9,19 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./posts.component.css"]
 })
 export class PostsComponent implements OnInit {
-  constructor(private postsService: PostsService) {}
+  constructor(
+    private postsService: PostsService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
   posts;
   ngOnInit() {
+    if (!localStorage.getItem('token')) this.router.navigate(["/login"]);
     this.getAllPosts();
   }
 
   getAllPosts() {
-    let data = { username: localStorage.getItem("token") };
+    let data = { username: this.authService.currentUser.username };
     this.postsService.getAll(data).subscribe(res => {
       let result = res.json();
       this.posts = result.data;
@@ -23,11 +30,12 @@ export class PostsComponent implements OnInit {
   post(postForm) {
     let data = {
       post: postForm.value.post,
-      username: localStorage.getItem("token")
+      username: this.authService.currentUser.username
     };
     this.postsService.createPost(data).subscribe(res => {
       let result = res.json();
-      this.posts.push(result.data);
+      // this.posts.push(result.data);
+      this.getAllPosts();
     });
   }
 }

@@ -17,4 +17,7 @@ export class PostsService {
   getEveryPost() {
     return this.http.get("http://localhost:5000/api/posts/every-post");
   }
+  getScore(name) {
+    return this.http.get(`http://localhost:5000/api/users/score/${name}`);
+  }
 }

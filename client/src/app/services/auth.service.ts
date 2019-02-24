@@ -2,12 +2,13 @@ import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
 import { map } from "rxjs/operators";
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthService {
-  constructor(private http: Http) {}
+  constructor(private http: Http , private router : Router) {}
 
   login(data) {
     return this.http.post("http://localhost:5000/api/login", data).pipe(
@@ -41,5 +42,6 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem("token");
+    this.router.navigate(["/login"]);;
   }
 }

@@ -14,7 +14,10 @@ import { FormsModule } from "@angular/forms";
 import { UsersService } from "./services/users.service";
 import { HttpModule } from "@angular/http";
 import { RouterModule, Routes } from "@angular/router";
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from "./navbar/navbar.component";
+import { AuthAdmin } from "./services/auth-admin.service";
+import { AuthGuard } from "./services/auth-guard.service";
+import { AdminComponent } from "./admin/admin.component";
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     SignUpComponent,
     PostsComponent,
     FeedComponent,
-    NavbarComponent
+    NavbarComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -33,10 +37,22 @@ import { NavbarComponent } from './navbar/navbar.component';
       { path: "login", component: LoginComponent },
       { path: "sign-up", component: SignUpComponent },
       { path: "", component: PostsComponent },
-      { path: "feed", component: FeedComponent }
+      { path: "feed", component: FeedComponent },
+      {
+        path: "admin",
+        component: AdminComponent,
+        canActivate: [AuthGuard, AuthAdmin]
+      }
     ])
   ],
-  providers: [AuthService, PostsService, UsersService, AdminService],
+  providers: [
+    AuthService,
+    PostsService,
+    UsersService,
+    AdminService,
+    AuthGuard,
+    AuthAdmin
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

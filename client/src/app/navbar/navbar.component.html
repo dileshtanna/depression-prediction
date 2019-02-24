@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">Twipression</a>
+  <a class="navbar-brand" routerLink="/">Twipression</a>
   <ul class="nav justify-content-end">
     <li class="nav-item">
       <a
@@ -14,7 +14,7 @@
         class="nav-link active"
         routerLinkActive="active current"
         routerLink="/admin"
-        *ngIf="authService.isLoggedIn() && authService.currentUser.isAdmin"
+        *ngIf="authService.isLoggedIn() && authService.currentUser.isAdmin === 'true'"
         >Dashboard</a
       >
     </li>
@@ -38,7 +38,7 @@
     </li>
     <li class="nav-item" *ngIf="authService.isLoggedIn()">
       <span style="color:black;" class="navbar-text active">
-        Welcome, {{ authService.currentUser.name }}</span
+        Welcome, {{ authService.currentUser.username }}</span
       >
     </li>
     <li class="nav-item">
